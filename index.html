@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 台語劇本生成系統 (v15.0)</title>
+    <title>AI 台語劇本生成系統 (v16.0)</title>
     <style>
         :root {
             --primary-color: #2E7D32;
@@ -22,11 +22,11 @@
             max-width: 900px;
             margin: 0 auto;
             
-            /* 新增：全頁禁止選取文字 */
-            -webkit-user-select: none; /* Safari */
-            -moz-user-select: none; /* Firefox */
-            -ms-user-select: none; /* IE10+/Edge */
-            user-select: none; /* Standard */
+            /* 全頁禁止選取文字 */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         
         /* 標題與設定按鈕區域 */
@@ -72,11 +72,12 @@
             margin-bottom: 20px;
         }
         
-        /* 狀態訊息顯示區 */
+        /* 狀態訊息顯示區 (位置調整後樣式) */
         #status-message {
             display: none;
             padding: 15px;
-            margin-bottom: 20px;
+            margin-top: 15px; /* 增加上方間距，與按鈕區隔 */
+            margin-bottom: 0;
             border-radius: 5px;
             font-weight: bold;
             text-align: center;
@@ -88,7 +89,7 @@
         .form-group { margin-bottom: 15px; }
         label { display: block; font-weight: bold; margin-bottom: 5px; color: #555; }
         
-        /* 修正：輸入框允許選取與編輯 */
+        /* 輸入框允許選取與編輯 */
         input[type="text"], input[type="password"], input[type="number"], select, textarea {
             width: 100%; 
             padding: 10px; 
@@ -271,7 +272,7 @@
         }
         .result-header h2 { margin: 0; color: #333; }
         
-        /* 新增：免責聲明樣式 */
+        /* 免責聲明樣式 */
         .disclaimer-text {
             font-size: 0.65em;
             color: #888;
@@ -310,7 +311,7 @@
             border: 1px solid #ddd;
             min-height: 200px;
             
-            /* 修正：輸出區允許選取 */
+            /* 輸出區允許選取 */
             -webkit-user-select: text;
             -moz-user-select: text;
             -ms-user-select: text;
@@ -321,12 +322,10 @@
 <body>
 
     <div class="header-container">
-        <h1>🎙️ AI 台語劇本生成系統(v15.0)</h1>
+        <h1>🎙️ AI 台語劇本生成系統(v16.0)</h1>
         <p class="subtitle">台中明道中學 詹宗龍 製作</p>
         <button class="settings-btn" id="open-settings-btn" title="系統設定">⚙️ 設定</button>
     </div>
-
-    <div id="status-message"></div>
 
     <div id="settings-modal" class="modal">
         <div class="modal-content">
@@ -458,6 +457,8 @@
             </div>
 
             <button type="button" class="btn" id="generate-btn">🚀 立即生成劇本</button>
+            
+            <div id="status-message"></div>
         </form>
     </div>
 
@@ -519,7 +520,7 @@
             }
         });
 
-        // 完整俗諺資料庫
+        // 完整俗諺資料庫 (文字已修正: 春蒙->春雺)
         const proverbDb = `
 1. 鴨仔聽雷 (Ah-á thiann luî) - 比喻一個人對所接收的訊息無法理解。
 2. 愛拚才會贏 (Ài piànn tsiah ē iânn) - 比喻唯有努力奮鬥,才能克服困難,成就一番事業。
