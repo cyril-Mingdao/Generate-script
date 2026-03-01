@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 台語劇本生成系統 (v19.0)</title>
+    <title>AI 台語劇本生成系統 (V20.0)</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔮</text></svg>">
     <style>
         :root {
@@ -324,7 +324,7 @@
 <body>
 
     <div class="header-container">
-        <h1>AI 台語劇本生成系統 (v19.0)</h1>
+        <h1>AI 台語劇本生成系統 (V20.0)</h1>
         <p class="subtitle">台中明道中學 詹宗龍 製作</p>
         <button class="settings-btn" id="open-settings-btn" title="系統設定">⚙️ 設定</button>
     </div>
@@ -338,11 +338,8 @@
             
             <div class="form-group">
                 <label for="apiKey">🔑 Google Gemini API Key：</label>
-                <div class="input-group">
-                    <input type="password" id="apiKey" placeholder="請輸入 API Key...">
-                    <button type="button" class="btn-secondary" id="load-models-btn" style="white-space: nowrap;">🔄 偵測可用模型</button>
-                </div>
-                <small style="color: #666;">* 輸入 Key 後請點擊偵測，確認模型可用性。</small>
+                <input type="password" id="apiKey" placeholder="請輸入 API Key...">
+                <small style="color: #666;">* 請輸入您的 Gemini API Key。</small>
             </div>
 
             <div class="form-group">
@@ -357,7 +354,9 @@
             <div class="form-group">
                 <label for="modelSelect">🤖 選擇 AI 模型：</label>
                 <select id="modelSelect">
-                    <option value="">請先輸入 API Key 並點擊「偵測可用模型」</option>
+                    <option value="gemini-3-flash-preview" selected>【順位1】Gemini 3 Flash Preview</option>
+                    <option value="gemini-2.5-flash">【順位2】Gemini 2.5 Flash</option>
+                    <option value="gemini-2.5-flash-lite">【順位3】Gemini 2.5 Flash Lite</option>
                 </select>
             </div>
 
@@ -494,7 +493,6 @@
         
         const statusMsg = document.getElementById("status-message");
         const generateBtn = document.getElementById("generate-btn");
-        const loadModelsBtn = document.getElementById("load-models-btn");
         const modelSelect = document.getElementById("modelSelect");
         const outputContainer = document.getElementById("output-container");
         const scriptOutput = document.getElementById("script-output");
@@ -976,17 +974,15 @@
                 apiKeyInput.value = savedKey;
                 if (savedBaseUrl) apiBaseUrlInput.value = savedBaseUrl;
                 
+                // 如果有儲存的模型且在可選清單中，則選取它
                 if (savedModel) {
-                    const option = document.createElement("option");
-                    option.value = savedModel;
-                    option.text = savedModel + " (已儲存設定)";
-                    option.selected = true;
-                    modelSelect.innerHTML = "";
-                    modelSelect.appendChild(option);
-                    const resetOption = document.createElement("option");
-                    resetOption.value = "";
-                    resetOption.text = "-- 若需更換模型請點擊偵測 --";
-                    modelSelect.appendChild(resetOption);
+                    const options = modelSelect.options;
+                    for (let i = 0; i < options.length; i++) {
+                        if (options[i].value === savedModel) {
+                            modelSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
                 }
             } else {
                 openModal();
@@ -1020,7 +1016,7 @@
                 localStorage.removeItem('gemini_base_url');
                 apiKeyInput.value = "";
                 apiBaseUrlInput.value = "";
-                modelSelect.innerHTML = '<option value="">請重新輸入 API Key</option>';
+                modelSelect.selectedIndex = 0; // 重置為順位1
                 showStatus("🗑️ 所有設定已清除", "success");
                 clearKeyBtn.innerText = "🗑️ 清除 API Key";
                 clearKeyBtn.style.backgroundColor = "#d32f2f";
@@ -1046,52 +1042,6 @@
                 statusMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
-
-        // 偵測模型
-        loadModelsBtn.addEventListener("click", async () => {
-            const apiKey = apiKeyInput.value.trim();
-            const baseUrl = apiBaseUrlInput.value.trim() || "https://generativelanguage.googleapis.com";
-            
-            if (!apiKey) { showStatus("❌ 請先輸入 API Key", "error"); return; }
-
-            modelSelect.innerHTML = "<option>正在連線查詢...</option>";
-            loadModelsBtn.disabled = true;
-
-            try {
-                const response = await fetch(`${baseUrl}/v1beta/models?key=${apiKey}`);
-                if (!response.ok) throw new Error(`連線錯誤 (${response.status})`);
-                const data = await response.json();
-                modelSelect.innerHTML = "";
-                
-                let validModels = data.models.filter(m => 
-                    m.name.includes("gemini") && 
-                    m.supportedGenerationMethods && 
-                    m.supportedGenerationMethods.includes("generateContent")
-                );
-
-                if (validModels.length === 0) {
-                    modelSelect.innerHTML = "<option value=''>找不到可用的 Gemini 模型</option>";
-                    return;
-                }
-
-                validModels.forEach(model => {
-                    const modelId = model.name.replace("models/", ""); 
-                    const option = document.createElement("option");
-                    option.value = modelId;
-                    option.text = `${model.displayName || modelId}`;
-                    if (modelId.includes("flash")) option.selected = true;
-                    modelSelect.appendChild(option);
-                });
-                showStatus("✅ 模型載入成功", "success");
-
-            } catch (error) {
-                console.error(error);
-                modelSelect.innerHTML = "<option value=''>載入失敗</option>";
-                showStatus(`❌ 模型載入失敗：${error.message}`, "error");
-            } finally {
-                loadModelsBtn.disabled = false;
-            }
-        });
 
         // 複製功能 (修改版)
         window.copyContent = function() {
