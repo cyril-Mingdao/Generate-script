@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 台語劇本生成系統 (V20.0)</title>
+    <title>AI 台語劇本生成系統 (V22.0)</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔮</text></svg>">
     <style>
         :root {
@@ -524,7 +524,7 @@
             }
         });
 
-        // 《全家有智慧》台語題庫與詞彙資料庫（成大詞彙、教育部新增詞條、俗諺、題庫總表，共 7 個資料庫）
+        // 《全家有智慧》台語題庫與詞彙資料庫（成大詞彙、教育部新增詞條、俗諺、題庫總表、擬聲擬態詞彙，共 8 個資料庫）
         const documentText = `
 𓆜𓆝𓆞𓆟𓆞𓆜𓆝𓆞𓆟𓆝𓆞𓆜𓆝𓆟𓆜𓆝𓆞𓆟
 【資料庫1：成大台語 C1 詞彙】
@@ -7328,6 +7328,131 @@ phāng）(動詞) 故意挑剔，苛求責備，吹毛求疵。強調時可重�
 　　解答／說明：失神（來源：801-1000.docx）
 
 （資料庫7 合計：1456 題）
+
+𓆜𓆝𓆞𓆟𓆞𓆜𓆝𓆞𓆟𓆝𓆞𓆜𓆝𓆟𓆜𓆝𓆞𓆟
+【資料庫8：擬聲擬態詞彙】
+序號	詞目	音讀	釋義	例句
+
+1.	茫（文 bông）
+　　釋義：廣大而模糊不明，通常以連字詞的形式出現。
+　　例句1：人海茫茫　jîn-hái bông-bông
+　　例句2：白茫茫　pe̍h-bông-bông
+2.	哈（ha）
+　　釋義：笑聲。 張口吐氣。 喝，特別指喝熱茶。
+　　例句1：哈哈大笑　ha-ha tāi-tshiò
+　　例句2：哈！予我掠著矣。　Ha! Hōo guá lia̍h--tio̍h--ah.
+3.	哼哼叫（hainn-hainn-kiò）
+　　釋義：痛苦的呻吟聲；不滿的抱怨聲。
+　　例句1：你莫佇遐哼哼叫，我聽甲足煩呢！　Lí mài tī hia hainn-hainn-kiò, guá thiann kah tsiok huân--neh!
+4.	唏嚇叫（hì-heh-kiò）
+　　釋義：人情緒失控大呼小叫的樣子。 聲響喧鬧嘈雜。
+　　例句1：啉甲起酒痟的阿義，規暝佇巷仔口唏嚇叫，聽候警察來矣，人煞走甲無看見影。　Lim kah khí-tsiú-siáu ê A-gī, kui mê tī hāng-á-kháu hì-heh-kiò, thìng-hāu kíng-tshat lâi--ah, lâng suah tsáu kah bô khuànn-kìnn iánn.
+　　例句2：外口規大陣人佇遐唏嚇叫，到底是發生啥物代誌？　Guā-kháu kui tuā tīn lâng tī hia hì-heh-kiò, tàu-té sī huat-sing siánn-mih tāi-tsì?
+5.	咻咻叫（hiu-hiu-kiò）
+　　釋義：形容風聲或人的喊叫聲。
+6.	齁替（honn）
+　　釋義：形容睡覺打鼾的聲音。
+　　例句1：伊睏甲齁齁叫。　I khùn kah honn-honn-kiò.
+7.	砉替（huah）
+　　釋義：刀子不沾水，乾磨數下，使其更為鋒利。 金石相磨的聲音。
+　　例句1：砉刀　huah to
+8.	鼾鼾叫（huânn-huânn-kiò）
+　　釋義：打呼。熟睡時呼吸發出來的聲音。
+　　例句1：伊帶痚呴，睏甲鼾鼾叫，足吵的。　I tài he-ku, khùn kah huânn-huânn-kiò, tsiok tshá--ê.
+9.	喓替（iaunn）
+　　釋義：和小嬰兒玩躲迷藏遊戲時，大人忽然出現的時候發出的聲音。
+10.	幼聲（iù-siann）
+　　釋義：形容聲音柔軟細嫩。
+　　例句1：伊講話誠幼聲。　I kóng-uē tsiânn iù-siann.
+11.	喈替（kainn）
+　　釋義：狗因痛苦而哀叫。 引申為人因痛苦而叫。
+　　例句1：狗仔喈喈叫　káu-á kainn-kainn-kiò
+　　例句2：一日到暗喈無錢。　Tsi̍t-ji̍t-kàu-àm kainn bô tsînn.
+12.	咯替（kha̍k）
+　　釋義：吐痰的聲音。 清喉嚨吐痰的動作。
+　　例句1：咯痰　kha̍k-thâm
+13.	摳替（kha̍unnh）
+　　釋義：咀嚼酥脆食物時所發出的清脆聲。
+　　例句1：食啥物食甲摳摳叫。　Tsia̍h siánn-mih tsia̍h kah kha̍unnh-kha̍unnh-kiò.
+14.	喀替（khe̍nnh）
+　　釋義：咳嗽、雷聲等的擬聲詞。 引申為咳嗽。
+　　例句1：喀喀嗽　khe̍nnh-khe̍nnh-sàu
+　　例句2：伊喀規半晡攏喀無痰。　I khe̍nnh kui-puànn-poo lóng khe̍nnh bô thâm.
+15.	吭替（khngh）
+　　釋義：多用來形容摩托車的聲音。
+　　例句1：外口是啥物人的車咧吭吭叫？　Guā-kháu sī siánn-mih-lâng ê tshia teh khngh-khngh-kiò?
+16.	吭替（khōng）
+　　釋義：擬聲詞。
+　　例句1：門吭一聲，逐家驚一趒。　Mn̂g khōng tsi̍t siann, ta̍k-ke kiann tsi̍t tiô.
+17.	吱替（ki）
+　　釋義：以尖細刺耳的聲音喊叫。 形容小動物或細碎尖銳的聲音。常以疊詞出現。
+　　例句1：莫吱啦！足噪耳的。　Mài ki--lah! Tsiok tshò-hīnn--ê.
+　　例句2：彼隻鳥鼠吱吱叫。　Hit tsiah niáu-tshí ki-ki-kiò.
+18.	噱噱叫（kia̍k-kia̍k-kiò）
+　　釋義：發出刺耳的噪音。
+　　例句1：你按呢噱噱叫會共人吵著。　Lí án-ne kia̍k-kia̍k-kiò ē kā lâng tshá--tio̍h.
+　　例句2：彼隻蟮蟲仔佇壁頂吼甲噱噱叫。　Hit tsiah siān-thâng-á tī piah-tíng háu kah kia̍k-kia̍k-kiò.
+19.	噭噭叫（kiàu-kiàu-kiò）
+　　釋義：形容人聲雜亂。
+　　例句1：是啥人佇遐咧噭噭叫？　Sī siánn-lâng tī hia teh kiàu-kiàu-kiò?
+20.	咯（ko̍k）
+　　釋義：指雞叫聲。
+　　例句1：雞仔咯咯叫。　Ke-á ko̍k-ko̍k-kiò.
+21.	公共（kong-kiōng）
+　　釋義：大眾所共有的。
+　　例句1：公共場所　kong-kiōng tiûnn-sóo
+22.	咩替（meh）
+　　釋義：羊的叫聲。
+23.	嗚替（onn）
+　　釋義：嗡。蚊子的叫聲。
+　　例句1：蠓仔佇耳空邊嗚嗚叫。　Báng-á tī hīnn-khang-pinn onn-onn-kiò.
+24.	噗（pho̍k）
+　　釋義：手掌的拍打聲。 心跳聲。
+　　例句1：噗仔聲　pho̍k-á-siann
+　　例句2：心肝噗噗跳。　Sim-kuann pho̍k-pho̍k-thiàu.
+25.	蓬替（phōng）
+　　釋義：向上發展的狀態。
+　　例句1：草蓬蓬生　tsháu phōng-phōng senn
+　　例句2：煙蓬蓬衝　ian phōng-phōng tshìng
+26.	哹替（pu）
+　　釋義：擬聲詞。 車子的代稱、簡稱，小孩子用語。
+　　例句1：車咧哹哹叫。　Tshia teh pu-pu-kiò.
+　　例句2：遐有一台哹哹。　Hia ū tsi̍t tâi pu-pu.
+27.	噓替（si）
+　　釋義：吹口哨。噘起嘴來吹氣發出聲音。
+　　例句1：噓尿　si-jiō
+28.	窸窸窣窣（si-si-su̍t-su̍t）
+　　釋義：形容細碎的摩擦聲。
+29.	窸窣叫（si̍h-su̍t-kiò）
+　　釋義：吃麵或喝湯、水時所發出的聲音。
+　　例句1：食麵食甲窸窣叫。　Tsia̍h mī tsia̍h kah si̍h-su̍t-kiò.
+30.	恬靜（tiām-tsīng）
+　　釋義：安靜無聲。 文靜。
+　　例句1：彼个囡仔真恬靜。　Hit ê gín-á tsin tiām-tsīng.
+31.	丼替（tôm）
+　　釋義：咚。東西投到井中的聲音。
+　　例句1：捾桶仔丼一聲就落入去鼓井內矣。　Kuānn-tháng-á tôm tsi̍t siann tō lak ji̍p-khì kóo-tsénn-lāi--ah.
+32.	咂替（tsa̍p）
+　　釋義：擬聲詞。嚼食的聲音。 嘖。因為不耐煩或不愉快而彈舌發出的吸入音。
+　　例句1：食甲咂咂叫　tsia̍h kah tsa̍p-tsa̍p-kiò
+33.	咂咂叫（tsa̍p-tsa̍p-kiò）
+　　釋義：心情不耐煩的時候所發出的聲音。 吃東西時所發出較大的聲音。
+　　例句1：啥物好食物，食甲咂咂叫？　Siánn-mih hó-tsia̍h mi̍h, tsia̍h kah tsa̍p-tsa̍p-kiò?
+34.	嚓替（tshia̍k）
+　　釋義：短促的嚓嚓聲，如按相機快門或搖晃籤筒發出的聲音。 因為驚嚇而心悸。
+　　例句1：害我心肝嚓一下。　Hāi guá sim-kuann tshia̍k--tsi̍t-ē.
+35.	喌替（tsû）
+　　釋義：呼叫雞隻的聲音。飼主要餵食野放的雞時，呼叫「喌喌」(tsû tsû)數聲，雞隻就會圍過來爭食。
+36.	呼聲（hoo-siann）
+　　釋義：（臺華共同詞 ，無義項）
+37.	霹靂（phik-li̍k）
+　　釋義：（臺華共同詞 ，無義項）
+38.	雜音（tsa̍p-im）
+　　釋義：（臺華共同詞 ，無義項）
+39.	掌聲（tsióng-siann）
+　　釋義：（臺華共同詞 ，無義項）
+
+（資料庫8 合計：39 條）
 `;
 
         modeSelect.addEventListener("change", () => {
@@ -7573,6 +7698,7 @@ phāng）(動詞) 故意挑剔，苛求責備，吹毛求疵。強調時可重�
 2. 禁止華語詞彙 (如:非常->真/誠, 覺得->感覺)。
 3. 【用語強制修正】：絕對強制將「拍謝」改為「歹勢」；將「以為」改為「當做」；將「不是」改為「毋是」；將「母湯」改為「毋通」。
 4. 【用字嚴格規範】：使用文字請嚴格遵守「教育部臺灣台語常用詞辭典」(https://sutian.moe.edu.tw/zh-hant/) 的用字與詞彙。
+5. 【擬聲擬態標音規範】：劇本中若使用「資料庫8：擬聲擬態詞彙」內的擬聲詞或擬態詞（如狀聲詞、疊字擬聲擬態語），請務必在該詞目後方以「(讀音)」標示台羅讀音，例如：哼哼叫(hainn-hainn-kiò)、鼾鼾叫(huânn-huânn-kiò)，方便使用者參考正確發音。
 
 【競賽模式詳細規範】
 讀者劇場模式 (Reader's Theater)
@@ -7593,8 +7719,8 @@ phāng）(動詞) 故意挑剔，苛求責備，吹毛求疵。強調時可重�
   轉：情節推展,運用對比與衝突。
   合：精簡有力,前後呼應,留給評審深刻印象。
 
-【參考資料庫：《全家有智慧》台語題庫與詞彙資料庫（成大詞彙、教育部新增詞條、俗諺、題庫總表）】
-請盡量從下列詞彙、俗諺與題庫中，選擇適合劇情者自然地融入劇本對話中：
+【參考資料庫：《全家有智慧》台語題庫與詞彙資料庫（成大詞彙、教育部新增詞條、俗諺、題庫總表、擬聲擬態詞彙）】
+請盡量從下列詞彙、俗諺、題庫與擬聲擬態詞彙中，選擇適合劇情者自然地融入劇本對話中。使用「資料庫8」的擬聲擬態詞時，請依規範5在詞目後方標示讀音：
 ${documentText}
 
 【需求參數】
