@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <!--
   【著作權聲明】
-  AI 台語劇本生成系統 (V28) — 台語教學網頁
+  AI 台語劇本生成系統 (V29) — 台語教學網頁
   Copyright © 2026 詹宗龍（臺中明道中學）. All rights reserved.
   【引用來源】
   台語用字與拼音參考中華民國教育部《臺灣台語常用詞辭典》，其著作權屬教育部。
   本網頁之程式碼、版面與教案設計著作權屬詹宗龍所有，僅供非營利之教育教學使用；前述引用之他人作品，著作權仍屬各原權利人。
   未經著作權人書面授權，不得重製、改作、散布或修改本網頁之全部或一部分。
 -->
-<!-- V28：全面美編排版（黑黃白主視覺），功能與 V27 相同 -->
+<!-- V29：標題與說明依語意斷行，避免單字落行（V28 起為黑黃白美編版）。原註：全面美編排版（黑黃白主視覺），功能與 V27 相同 -->
 
 <html lang="zh-TW">
 <head>
@@ -17,7 +17,7 @@
     <meta name="copyright" content="© 2026 詹宗龍（臺中明道中學）。保留一切權利。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#111111">
-    <title>AI 台語劇本生成系統 (V28)</title>
+    <title>AI 台語劇本生成系統 (V29)</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔮</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,6 +146,9 @@
             margin: 0 auto;
             font-size: clamp(15px, 2.2vw, 18px);
         }
+        /* 標題與說明依語意斷行：每個 .ph 片語不從中間切開，避免最後一行只剩一個字 */
+        .hero h1, .hero .lead { text-wrap: balance; }
+        .ph { display: inline-block; }
         .hero .byline { margin-top: 14px; font-size: 14px; color: var(--yellow); font-weight: 700; letter-spacing: .06em; }
 
         /* ---- 內容區 ---- */
@@ -554,9 +557,9 @@
     </header>
 
     <section class="hero">
-        <span class="eyebrow">讀者劇場・情境演說 <span class="ver">V28</span></span>
-        <h1>AI 台語<span class="hl">劇本生成</span>系統</h1>
-        <p class="lead">選好競賽模式與年段，輸入題目與大綱，一鍵生成符合教育部用字的台語比賽劇本。</p>
+        <span class="eyebrow">讀者劇場・情境演說 <span class="ver">V29</span></span>
+        <h1><span class="ph">AI 台語</span><span class="ph"><span class="hl">劇本生成</span>系統</span></h1>
+        <p class="lead"><span class="ph">選好競賽模式與年段，</span><span class="ph">輸入題目與大綱，</span><span class="ph">一鍵生成符合教育部用字的台語比賽劇本。</span></p>
         <p class="byline">台中明道中學 詹宗龍 製作</p>
     </section>
 
